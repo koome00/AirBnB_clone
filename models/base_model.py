@@ -7,7 +7,7 @@ This class deines all common attributes/methods for other classes
 """
 
 import uuid
-import datetime
+from datetime import datetime
 
 class BaseModel():
     """
@@ -37,6 +37,23 @@ class BaseModel():
         instance attribute updated_at with the current datetime
         """
         self.updated_at = datetime.now()
+
+    def to_dict(self):
+        """
+        returns a dictionary
+        containing all keys/values of __dict__ of the instance:
+        """
+        dic = {}
+        dic['__class__'] = self.__class__.__name__
+        
+        for key, value in self.__dict__.items():
+            if type(value) is datetime:
+                dic[key] = value.isoformat()
+            else:
+                dic[key] = value
+        return dic
+                
+
 
         
 
