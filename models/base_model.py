@@ -43,16 +43,15 @@ class BaseModel():
         returns a dictionary
         containing all keys/values of __dict__ of the instance:
         """
-        dic = {}
-        dic['__class__'] = self.__class__.__name__
-        
-        for key, value in self.__dict__.items():
-            if type(value) is datetime:
-                dic[key] = value.isoformat()
-            else:
-                dic[key] = value
+        dic = dict(**self.__dic__)
+        dic['__class__'] = str(self.__class__.__name__)
+        dic['created_at'] = self.created_at.isoformat()
+        dic['updated_at'] = self.updated_at.isoformat()
+
         return dic
-                
+
+        
+        
 
 
         
