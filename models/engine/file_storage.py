@@ -11,7 +11,7 @@ class FileStorage:
     """ this is the file storage that serializesto a
     JSON file and deserialrizes JSON file to instances
     Private class attributes:
-    __file_path: path to the JSON file
+        __file_path: path to the JSON file
         __objects: objects will be stored
     """
     __file_path = "file.json"
