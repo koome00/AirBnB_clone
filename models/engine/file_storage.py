@@ -3,8 +3,8 @@
 
 
 import json
-import datetime
-import models
+from models.base_model import BaseModel
+
 
 
 class FileStorage:
@@ -16,6 +16,7 @@ class FileStorage:
     """
     __file_path = "file.json"
     __objects = {}
+    all_classes = {"BaseModel": BaseModel}
 
     def all(self, cls=None):
         """returns a dictionary
@@ -50,7 +51,7 @@ class FileStorage:
         try:
             with open(self.__file_path, 'r', encoding="UTF-8") as f:
                 for key, value in (json.load(f)).items():
-                    value = eval(value["__class__"])(**value)
+                    value = self.all_classes[value["__class__"]](**value)
                     self.__objects[key] = value
         except FileNotFoundError:
             return
