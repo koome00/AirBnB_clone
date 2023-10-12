@@ -4,7 +4,7 @@
 
 import json
 import datetime
-from models.base_model import BaseModel
+import models
 
 
 class FileStorage:
@@ -37,7 +37,7 @@ class FileStorage:
             self.__objects[key] = obj
 
     def save(self):
-        """serialize the file path to JSON file path
+        """serialize __objects to JSON file path
         """
         my_dict = {}
         for key, value in self.__objects.items():
@@ -46,7 +46,7 @@ class FileStorage:
             json.dump(my_dict, f)
 
     def reload(self):
-        """ serialize the file path to JSON filr path """
+        """ deserialize the file path to JSON file path """
         try:
             with open(self.__file_path, 'r', encoding="UTF-8") as f:
                 for key, value in (json.load(f)).items():
