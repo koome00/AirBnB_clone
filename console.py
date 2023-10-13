@@ -97,8 +97,21 @@ class HBNBCommand(cmd.Cmd):
         
         if len(line) == 0:
             for item in storage.all().values():
-                inst_list.append(item)
-                print(inst_list)
+                inst_list.append(str(item))
+            print(inst_list)
+            return
+
+        if args[0] in storage.all_classes.keys():
+            for key, value in storage.all().items():
+                if key.split(".")[0] == args[0]:
+                    inst_list.append(str(value))
+            print(inst_list)
+            return
+        else:
+            print("** class doesn't exist **")
+            return
+            
+        
         
 
         
