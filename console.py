@@ -1,10 +1,7 @@
 #!/usr/bin/python3
 """ AirBnB console using cmd"""
 
-import json
 import cmd
-import models
-from models.base_model import BaseModel
 from models import storage, all_classes
 
 class HBNBCommand(cmd.Cmd):
