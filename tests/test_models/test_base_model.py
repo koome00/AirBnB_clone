@@ -29,11 +29,11 @@ class TestBaseModel(unittest.TestCase):
     def test_instance_attributes(self):
         """ Testing if attributes are assigned correctly """
         my_model = BaseModel()
-        my_model.name = "Holberton"
+        my_model.name = "My_First_Model"
         my_model.my_number = 89
 
         self.assertIsInstance(my_model, BaseModel)
-        self.assertEqual(my_model.name, 'Holberton')
+        self.assertEqual(my_model.name, 'My_First_Model')
         self.assertEqual(type(my_model.name), str)
         self.assertEqual(my_model.my_number, 89)
         self.assertEqual(type(my_model.my_number), int)
