@@ -158,6 +158,16 @@ class HBNBCommand(cmd.Cmd):
         
         if command.startswith("destroy"):
             return self.do_destroy(args[0] + " " + id)
+        
+        if command.startswith("update"):
+            id = command[start + 2:start + 38]
+            arg = command[start + 1: -1]
+            arg = arg.split(", ")
+            obj = args[0] + " " + id + " " + arg[1] + " " + arg[2]
+            return self.do_update(obj)
+            
+
+            
 
             
 
