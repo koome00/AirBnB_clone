@@ -54,11 +54,11 @@ class TestBaseModel(unittest.TestCase):
     def test_save_method(self):
         """ Testing if save method is correct """
         my_model = BaseModel()
-        my_model.name = "Holberton"
+        my_model.name = "My_First_Model"
         my_model.my_number = 89
         my_model.save()
         model_dict = my_model.to_dict()
-        my_model.name = "School"
+        my_model.name = "Model_2"
         my_model.save()
         model_dic2 = my_model.to_dict()
 
