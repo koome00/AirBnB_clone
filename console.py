@@ -137,6 +137,10 @@ class HBNBCommand(cmd.Cmd):
         args = line.split(".")
         
         command = args[1]
+        start = command.find("(")
+        end = command.find(")")
+        id = command[start + 2: end - 1]
+        
         if command.startswith("all"):
             return self.do_all(args[0])
         count = 0
@@ -150,11 +154,10 @@ class HBNBCommand(cmd.Cmd):
             return print(count)
         
         if command.startswith("show"):
-            start = command.find("(")
-            end = command.find(")")
-
-            id = command[start + 2: end -1]
             return self.do_show(args[0] + " " + id)
+        
+        if command.startswith("destroy"):
+            return self.do_destroy(args[0] + " " + id)
 
             
 
