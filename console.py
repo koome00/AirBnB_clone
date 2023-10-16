@@ -130,21 +130,39 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, line):
         """
-        retrieve all instances of a class by using
+        retrieve all instances from class name
+        count all instances of a class
+        show all instances using id
         """
         args = line.split(".")
-
-        if args[1] == "all" or args[1] == "all()":
+        
+        command = args[1]
+        if command.startswith("all"):
             return self.do_all(args[0])
         count = 0
-        if args[1] == "count" or args[1] == "count()":
+        
+        if command.startswith("count"):
             all_objs = storage.all()
             for key in all_objs.keys():
                 obj = key.split(".")
                 if obj[0] == args[0]:
                     count += 1
             return print(count)
-                
+        
+        if command.startswith("show"):
+            start = command.find("(")
+            end = command.find(")")
+
+            id = command[start + 2: end -1]
+            return self.do_show(args[0] + " " + id)
+
+            
+
+
+
+
+
+        
                 
             
 
