@@ -128,6 +128,14 @@ class HBNBCommand(cmd.Cmd):
         """emptyline do not execute before command"""
         pass
 
+    def default(self, line):
+        """
+        retrieve all instances of a class by using
+        """
+        args = line.split(".")
+        
+        return self.do_all(args[0])
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
