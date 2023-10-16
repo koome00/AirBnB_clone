@@ -133,8 +133,22 @@ class HBNBCommand(cmd.Cmd):
         retrieve all instances of a class by using
         """
         args = line.split(".")
-        
-        return self.do_all(args[0])
+
+        if args[1] == "all" or args[1] == "all()":
+            return self.do_all(args[0])
+        count = 0
+        if args[1] == "count" or args[1] == "count()":
+            all_objs = storage.all()
+            for key in all_objs.keys():
+                obj = key.split(".")
+                if obj[0] == args[0]:
+                    count += 1
+            return print(count)
+                
+                
+            
+
+    
 
 
 if __name__ == "__main__":
